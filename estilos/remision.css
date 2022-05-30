@@ -1,0 +1,171 @@
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+
+
+
+/*Main*/
+body{
+    background-color: #ABF6FC;
+}
+
+section{
+    padding: 2rem 0;/*margen superior*/
+    background-color: #ABF6FC;
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: bold;/*poner en negrita*/
+
+    text-align: center;
+    text-transform: uppercase;/*pasar el texto a mayuscula*/
+    color: #707070;
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;/*acopla lementos al tamaño del formilario*/
+    justify-content: space-between;
+
+    width: 100% ;/*ancho*/
+    padding: 0 1rem;/*lateral, el cero es arriba y abajo */ 
+    max-width: 1000px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+
+    width: 20rem;
+    margin: 0.5rem 0;
+}
+
+.field label{
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+
+    color: #696969;
+}
+
+.field input{
+    font-size: 1.1rem;
+    height: 2.2rem; /*altura*/
+    padding-left: 0.5rem;
+
+    width: 70%; /*ancho */
+    border: 2px ;
+    border-radius: 5px;
+}
+
+.field select{
+    font-size: 1.1rem;
+    width: 12rem;
+    height: 2.6rem;
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 2px solid #696969;
+}
+
+
+.textbox{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    margin: 0.75rem 0;
+}
+
+.textbox label {
+    
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+
+    color: #696969;
+}
+
+textarea{
+    font-size: 1.1rem;
+
+    max-width: 100%;
+    height: 3rem;
+    max-height: 15rem;
+    padding-top: 0.5rem;/* margen para la escritura*/
+    padding-left: 0.5rem;
+    border-radius: 5px;
+    border: 2px solid #696969;
+
+}
+
+textarea textbox{
+    width: 10rem;
+}
+
+.gustos{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    width: 20rem;
+    margin: 0.75rem 0;
+}
+
+.gustos label {
+    
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+
+    color: #696969;
+}
+
+.gustos div{
+    display: flex;
+    justify-content: flex-start;
+
+    padding-left: 0.5rem;
+}
+
+.gustos div input{
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+}
+
+.privacidad{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5rem;
+}
+.submit button{
+    padding: 0.75rem 1.2rem;
+
+    font-size: 1rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 2p; 
+}
+
+

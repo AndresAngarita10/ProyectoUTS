@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../estilos/prueba.css" rel="stylesheet" type="text/css" />
+    <link href="../../estilos/resets.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500,600,700&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="" class="logo">
+            <img src="../../imagenes/img3.png" />
+        </a>
+        <nav>
+            <a class="ultimos" href="">Ultimos articulos</a>
+            <a href="">Popular</a>
+            <a href="">Tecnologia</a>
+        </nav>
+        <div class="options" >
+            <img src="../../imagenes/img1.jpg" />
+            <img src="../../imagenes/img2.png" />
+        </div>
+    </header>
+    <main>
+        <section>
+            <h1>Formulario de Registro</h1>
+            <form>
+                <div class="field">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" required >
+                </div>
+                <div class="field">
+                    <label>Apellido</label>
+                    <input type="text" name="apellido" required >
+                </div>
+                <div class="field">
+                    <label>Estado Laboral</label>
+                    <select>
+                        <option selected disabled>Seleccione un valor</option>
+                        <option>Desempleado</option>
+                        <option>Trabajando</option>
+                        <option>Trabajando por cuenta ajena</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" required >
+                </div>
+                <div class="field">
+                    <label>Contraseña</label>
+                    <input type="password" name="contraseña" required >
+                </div>
+                <div class="field">
+                    <label>Telefono</label>
+                    <input type="number" name="telefono" required >
+                </div>
+                <div class="textbox">
+                    <label>Otros datos</label>
+                    <textarea></textarea>
+                </div>
+                <div class="gustos">
+                    <label>Quieres recibir informacion relacionada con tus gustos</label>
+                    <div><input type="radio" name="gustos" required autocomplete>Si</div>
+                    <div><input type="radio" name="gustos" required autocomplete>No</div>
+                </div>
+                <div class="privacidad">
+                    <input type="checkbox" required >
+                    <label>He leido y acepto la politica de privacidad</label>
+                </div>
+                <div class="submit">
+                    <button>Enviar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
