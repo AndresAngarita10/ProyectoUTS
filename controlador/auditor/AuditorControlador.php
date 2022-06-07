@@ -132,6 +132,94 @@
                 <?php
                 
             }
+        }else if ($modo == "buscedulaTerm"){
+            $ccAuditor = $_POST['ccAuditor'];
+            $identificacionPaciente = $_POST['cedula'];
+            $ModDatosRemision = new ModeloDatosRemision();
+            $resultado = $ModDatosRemision->getRemisionXCedulaTerm($identificacionPaciente);
+            if($resultado==null){
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/auditor/RefYContraRefTerminado.php' method='post'>
+                            <input type='text' hidden name='ccAuditor' value='<?php echo($ccAuditor);  ?>'/>
+                    </form>
+                </body>
+
+                <?php
+            }else {
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/auditor/RefYContraRefTerminado.php' method='post'>
+                            <input type='text' hidden name='ccAuditor' value='<?php echo($ccAuditor);  ?>'/>
+                            <input type='text' hidden name='busqueda' value='<?php echo($identificacionPaciente);  ?>'/>
+                    </form>
+                </body>
+
+                <?php
+
+            }
+
+
+        }else if ($modo == "buscedulaSinTerm"){
+            $ccAuditor = $_POST['ccAuditor'];
+            $identificacionPaciente = $_POST['cedula'];
+            $ModDatosRemision = new ModeloDatosRemision();
+            $resultado = $ModDatosRemision->getRemisionXCedulaSinTerm($identificacionPaciente);
+            if($resultado==null){
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/auditor/RefYContraRef.php' method='post'>
+                            <input type='text' hidden name='ccAuditor' value='<?php echo($ccAuditor);  ?>'/>
+                    </form>
+                </body>
+
+                <?php
+            }else {
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/auditor/RefYContraRef.php' method='post'>
+                            <input type='text' hidden name='ccAuditor' value='<?php echo($ccAuditor);  ?>'/>
+                            <input type='text' hidden name='busqueda' value='<?php echo($identificacionPaciente);  ?>'/>
+                    </form>
+                </body>
+
+                <?php
+
+            }
+
+
         }else {
 ?>
             <title>Procesando...</title>

@@ -101,7 +101,14 @@ if(isset($_GET['retorno'])){
     include_once("../../modelo/Conexion.php");
     try {
         $ControlModelo = new ModeloDatosRemision();
-        $tabla = $ControlModelo->getAllRemisionSinFinalizar();
+        if (isset($_POST['busqueda'])) {
+            $control = $_POST['busqueda'];
+            $tabla = $ControlModelo->getRemisionXCedulaSinTerm($control);
+
+        }else{
+            $tabla = $ControlModelo->getAllRemisionSinFinalizar();
+        }
+
         
                 ?>
             <div id="fomr" class="d-flex justify-content-center align-items-center">
@@ -114,7 +121,7 @@ if(isset($_GET['retorno'])){
                                 
                                 <div id="contenedor" class="row">
                                 <div id="busqueda" class="col-4 my-auto mx-auto">
-                                <form class="form-inline my-2 my-lg-0" method="POST" action="../../controlador/paciente/PacienteControl.php">
+                                <form class="form-inline my-2 my-lg-0" method="POST" action="../../controlador/auditor/AuditorControlador.php">
                                     <input class="form-control rounded-5 mr-sm-2" autocomplete="off" placeholder="Buscar por cedula" 
                                         type="search" name="cedula" id="cedula" aria-label="Search">
 
@@ -123,7 +130,7 @@ if(isset($_GET['retorno'])){
                                         type="ccAuditor" name="ccAuditor" id="cedula" aria-label="Search">
 
                                         <button class="btn btn-info  my-2 my-sm-0 rounded-5" type="submit"
-                                        name="boton" id="boton" value="buscedula">Buscar</button>
+                                        name="boton" id="boton" value="buscedulaSinTerm">Buscar</button>
                                 </form>
                                 </div>
                                 <br />

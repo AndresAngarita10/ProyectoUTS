@@ -563,6 +563,7 @@
         $ObjetoCitas->setMotivoCancelacion(htmlentities(addslashes($motivo)));
 
         $ModeloCitas->cancelaCita($ObjetoCitas);
+        $retorno = "Cita Cancelada";
         ?> 
 
             <title>Procesando...</title>
@@ -575,7 +576,7 @@
             <body onLoad='javascript:enviarForm();'>
                 <form name='form' action='../../vista/index/IndexAuxAdministrativo.php' method='post'>
                         <input type='text' hidden name='activar' value='1'/>
-                        <input type='text' hidden name='control' value='<?php echo($retorno);?>'/>
+                        <input type='text' hidden name='aceptada' value='<?php echo($retorno);?>'/>
                         
                 </form>
             </body>

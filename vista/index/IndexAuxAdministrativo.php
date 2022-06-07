@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500,600,700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
@@ -69,6 +73,28 @@
 <body>
 <div class="row" style="height: 100vh; background-color: gray;">
   <div class="col-md-5 col-sm-9 bg-light">
+    <?php 
+        if (isset($_POST['error'])) {
+          ?>
+          <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; margin-left: auto; margin-right: auto;" role="alert">
+              <strong>Hola!</strong> <?php echo($_POST['error']); ?>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php
+
+      }
+      ?>
+      <?php 
+          if (isset($_POST['aceptada'])) {
+            ?>
+            <div class="alert alert-success alert-dismissible fade show" style="width: 100%; margin-left: auto; margin-right: auto;" role="alert">
+                <strong>Hola!</strong> <?php echo($_POST['aceptada']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+  
+        }
+        ?>
     <div class="p-5 my-auto">
         <center>
             <img width="200px" height="180px" 

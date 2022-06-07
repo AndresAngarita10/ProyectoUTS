@@ -10,20 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <a href="" class="logo">
-            <img src="../../imagenes/img3.png" />
-        </a>
-        <nav>
-            <a class="ultimos" href="">Ultimos articulos</a>
-            <a href="">Popular</a>
-            <a href="">Tecnologia</a>
-        </nav>
-        <div class="options" >
-            <img src="../../imagenes/img1.jpg" />
-            <img src="../../imagenes/img2.png" />
-        </div>
-    </header>
+  <?php include '../layout/headerMedico.php';  ?>
 
     <style>
         select{

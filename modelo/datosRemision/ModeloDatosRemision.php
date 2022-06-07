@@ -96,6 +96,64 @@
                     }
                     return $r;
                 }
+
+                public function getRemisionXCedulaTerm($identificacionPaciente){
+                    $matriz = array(); 
+                    $contador = 0;
+                    $resultado = $this->connect()->prepare("SELECT * FROM datosremision WHERE identificacionPaciente = :identificacionPaciente AND finalizado = 1  ");
+                    $resultado->execute(['identificacionPaciente' => $identificacionPaciente]);
+                    while($registro2 = $resultado->fetch(PDO::FETCH_ASSOC)){
+                        $r = new ObjetoDatosAdministrativos();
+                            $r->setId($registro2["id"]);
+                            $r->setTipoSolicitud($registro2["tipoSolicitud"]);
+                            $r->setnumeroHistoria($registro2["numeroHistoria"]);
+                            $r->setidentificacionPaciente($registro2["identificacionPaciente"]);
+                            $r->setMedicoSolicitante($registro2["medicoSolicitante"]);
+                            $r->setServicioRemite($registro2["servicioRemite"]);
+                            $r->setServicioRemitido($registro2["servicioRemitido"]);
+                            $r->setEntidadResponsablePago($registro2["entidadResponsablePago"]);
+                            $r->setTelefono($registro2["telefono"]);
+                            $r->setEspecialidadRemite($registro2["especialidadRemite"]);
+                            $r->setEspecialidadRemitido($registro2["especialidadRemitido"]);
+                            $r->setobservaciones($registro2["observaciones"]);
+                            $r->setFechaAgregado($registro2["fechaAgregado"]);
+                            $r->setfkIdMedico($registro2["fkIdMedico"]);
+                            $r->setTomada($registro2["tomada"]);
+                            $r->setfinalizado($registro2["finalizado"]);
+                        $matriz[$contador] = $r;
+                        $contador++;
+                    }
+                    return $matriz;
+                }
+
+                public function getRemisionXCedulaSinTerm($identificacionPaciente){
+                    $matriz = array(); 
+                    $contador = 0;
+                    $resultado = $this->connect()->prepare("SELECT * FROM datosremision WHERE identificacionPaciente = :identificacionPaciente AND finalizado = 0  ");
+                    $resultado->execute(['identificacionPaciente' => $identificacionPaciente]);
+                    while($registro2 = $resultado->fetch(PDO::FETCH_ASSOC)){
+                        $r = new ObjetoDatosAdministrativos();
+                            $r->setId($registro2["id"]);
+                            $r->setTipoSolicitud($registro2["tipoSolicitud"]);
+                            $r->setnumeroHistoria($registro2["numeroHistoria"]);
+                            $r->setidentificacionPaciente($registro2["identificacionPaciente"]);
+                            $r->setMedicoSolicitante($registro2["medicoSolicitante"]);
+                            $r->setServicioRemite($registro2["servicioRemite"]);
+                            $r->setServicioRemitido($registro2["servicioRemitido"]);
+                            $r->setEntidadResponsablePago($registro2["entidadResponsablePago"]);
+                            $r->setTelefono($registro2["telefono"]);
+                            $r->setEspecialidadRemite($registro2["especialidadRemite"]);
+                            $r->setEspecialidadRemitido($registro2["especialidadRemitido"]);
+                            $r->setobservaciones($registro2["observaciones"]);
+                            $r->setFechaAgregado($registro2["fechaAgregado"]);
+                            $r->setfkIdMedico($registro2["fkIdMedico"]);
+                            $r->setTomada($registro2["tomada"]);
+                            $r->setfinalizado($registro2["finalizado"]);
+                        $matriz[$contador] = $r;
+                        $contador++;
+                    }
+                    return $matriz;
+                }
                 
         // ORDER BY fechaAgregado DESC
         
