@@ -27,14 +27,13 @@
     </head>
     <body>
         <?php
-            $error = 0;
-            if(isset($_POST['error'])){
-                $error = $_POST['error'];
-            }
+            //$error = 0;
+            
 
-            if($error == "1"){
-                echo "usuario o Contraseña Incorrecto";
-            }
+            //if($error == "1"){
+           //     echo "usuario o Contraseña Incorrecto";
+           // }
+
 
             
             
@@ -56,6 +55,17 @@
         </header>
         <body onload="deshabilitaRetroceso()">
         <section>
+            <?php
+            if(isset($_GET['error'])){
+                $error = $_GET['error'];
+                ?>
+                <div class="alert alert-warning alert-dismissible fade show" style="width: 80%; margin-left: auto; margin-right: auto;" role="alert">
+                    <strong>Hola!</strong> Tu contraseña es incorrecta, intentalo de nuevo!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php
+                //echo "usuario o Contraseña Incorrecto";
+            } ?>
             <form class="formulario" action="../../controlador/usuarios/UsuariosControl.php" method="post" enctype="multipart/form-data" name="form2">
                 <!-- Creamos la class formulario con la cual llamaremos nuestros estilos-->
                 <fieldset>
@@ -82,7 +92,7 @@
     <script type= text/javascript>
 /* AQUI COLOCAMOS LA URL BASE, ES DECIR LA QUE TE LLEVA AL LOGIN*/
   if(window.history.replaceState) {
-    window.history.replaceState(null,null,'<?php echo "login.php";?>');
+    window.history.replaceState(null,null,'<?php echo "login.php?error=".$error;?>');
   }
 </script>
 </html>

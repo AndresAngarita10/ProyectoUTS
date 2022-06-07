@@ -10,13 +10,14 @@
   include_once("../../modelo/medico/ModeloMedico.php");
   $Medico = new ModeloMedico();
   //echo $_POST['ccMed'];
-  //$validarMed= $Medico->getMedicoXCedula($_POST['ccMEd']);
+  $ccMed = $_POST['ccMed'];
+  $validarMed= $Medico->getMedicoXCedula($_POST['ccMed']);
   //echo ($validarMed->getPrimerNombre());
-  //$ccMEd = $validarMed->getNumeroDocumento();
-  //echo $ccMEd;
-  //if($validarMed==null){
-  //    header("Location: ../../index.php");
-  //}
+  $ccMEd = $validarMed->getNumeroDocumento();
+  //echo $ccMed;
+  if($validarMed==null){
+      header("Location: ../../index.php");
+  }
   ?>
   <title>Bienvenido</title>
 

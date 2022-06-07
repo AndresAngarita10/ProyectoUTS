@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <?php  header("Location: vista/Inicio/login.php"); ?>
+    <?php  header("Location: vista/Inicio/login.php"); 
+    
+    //https://github.com/AndresAngarita10/ProyectoUTS.git?>
 </body>
 </html>

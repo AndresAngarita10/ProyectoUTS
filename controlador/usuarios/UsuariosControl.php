@@ -149,6 +149,57 @@
                 <body onLoad='javascript:enviarForm();'>
                     <form name='form' action='../../vista/index/IndexAdministrador.php' method='post'>
                             <input type='text' hidden name='ccAdmin' value='<?php echo($ccAdmin); //?Medico= echo($ccMed); ?>'/>
+                            <input type='text' hidden name='error' value='<?php echo("No Existe Usuario Con El Numero de Cedula: ".$cedula);?>'/>
+    
+                    </form>
+                </body>
+    
+                <?php
+
+            }
+            
+        
+        }else if($modo == "buscarUsuarioCC2"){
+            $ccAdmin = $_POST['ccAdmin'];
+            $cedula = $_POST['cedula'];
+            $usuario = new ModeloUsuarios();
+
+            $resultado = $usuario->getUsuariosXCedua($cedula);
+            if($resultado!=null){
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/usuarios/NuevaContraseña.php' method='post'>
+                            <input type='text' hidden name='ccAdmin' value='<?php echo($ccAdmin); ?>'/>
+    
+                            <input type='text' hidden name='nombre' value='<?php echo($resultado->getNombre());?>'/>
+                            <input type='text' hidden name='numeroDocumento' value='<?php echo($resultado->getCedula());?>'/>
+                    </form>
+                </body>
+    
+                <?php
+
+            }else {
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/index/IndexAdministrador.php' method='post'>
+                            <input type='text' hidden name='ccAdmin' value='<?php echo($ccAdmin); //?Medico= echo($ccMed); ?>'/>
+                            <input type='text' hidden name='error' value='<?php echo("No Existe Usuario Con El Numero de Cedula: ".$cedula);?>'/>
     
                     </form>
                 </body>
@@ -379,6 +430,68 @@
                             <input type='text' hidden name='tipoUsuario' value='<?php echo("medico"); ?>'/>
                             <input type='text' hidden name='fkIdRol' value='<?php echo("1"); ?>'/>
                             <input type='text' hidden name='rolesActivos' value='<?php echo("medico"); ?>'/>
+                            <input type='text' hidden name='error' value='<?php echo("No Coinciden las Contraseñas"); ?>'/>
+    
+    
+    
+                    </form>
+                </body>
+    
+                <?php
+            }
+        }else if($modo == "guardarPass2"){
+            //$ccAdmin = $_POST['ccAdmin'];
+            $numeroDocumento = $_POST['numeroDocumento'];
+            $nombre = $_POST['nombre'];
+            $clave1 = $_POST['clave1'];
+            $clave2 = $_POST['clave2'];//password_verify($pass, $passHash)
+            
+            if($clave1==$clave2){
+                $pass = $_POST['clave1'];    
+                $passHash = password_hash($pass, PASSWORD_BCRYPT);
+                //echo $passHash;
+                
+                $ModeloUsuario = new ModeloUsuarios();
+                $Usuario = new ObjetoUsuarios();
+                $Usuario->setNombre(htmlentities(addslashes($nombre)));
+                $Usuario->setCedula(htmlentities(addslashes($numeroDocumento)));
+                $Usuario->setClave(htmlentities(addslashes($passHash)));
+                $ModeloUsuario->actualizarContraseña($Usuario);
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/index/IndexAdministrador.php' method='post'>
+                            <input type='text' hidden name='ccAdmin' value='<?php //echo($ccAdmin); //?Medico= echo($ccMed); ?>'/>
+                            <input type='text' hidden name='aceptada' value='<?php echo("Actualizado con exito"); ?>'/>
+    
+                    </form>
+                </body>
+    
+                <?php
+
+            }else{
+                ?> 
+
+                <title>Procesando...</title>
+                <script type='text/javascript'>
+                    function enviarForm(){
+                        document.form.submit();
+                    }
+                </script>
+                </head>
+                <body onLoad='javascript:enviarForm();'>
+                    <form name='form' action='../../vista/usuarios/NuevaContraseña.php' method='post'>
+                            <input type='text' hidden name='ccAdmin' value='<?php echo($ccAdmin);  ?>'/>
+                            <input type='text' hidden name='nombre' value='<?php echo($nombre); ?>'/>
+                            <input type='text' hidden name='numeroDocumento' value='<?php echo($numeroDocumento); ?>'/>
+                            <input type='text' hidden name='error' value='<?php echo("No Coinciden las Contraseñas"); ?>'/>
     
     
     
@@ -668,7 +781,7 @@
                             </head>
                             <body onLoad='javascript:enviarForm();'>
                                 <form name='form' action='../../vista/index/indexMedicoFinal.php' method='post'>
-                                        <input type='text' hidden name='ccMEd' value='<?php echo($usuario->getCedula()); //?Medico= echo($ccMed); ?>'/>
+                                        <input type='text' hidden name='ccMed' value='<?php echo($usuario->getCedula()); //?Medico= echo($ccMed); ?>'/>
                 
                                 </form>
                             </body>

@@ -14,8 +14,8 @@
             $resultado = $this->connect()->prepare("SELECT * FROM usuarios  WHERE cedula = :cedula ");
             $resultado->execute(['cedula' => $cedula]);
             if($resultado!=null){
-                $usuarios = new ObjetoUsuarios();
                 while($registro = $resultado->fetch(PDO::FETCH_ASSOC)){
+                    $usuarios = new ObjetoUsuarios();
     
                     $usuarios->setId($registro["id"]);
                     $usuarios->setNombre($registro["nombre"]);
@@ -26,9 +26,10 @@
                     $usuarios->setFechaAgregado($registro["fechaAgregado"]);
                     $usuarios->setRolesActivos($registro["rolesActivos"]);
                     $usuarios->setHabilitado($registro["habilitado"]);
+                    return $usuarios;
                 }
                 
-                return $usuarios;
+                return null;
             }else {
                 return null;
                 
@@ -55,6 +56,11 @@
 			//$this->acceso->exec($sql);
 		}
 
-        
+        public function actualizarContraseña($usuarios){
+			$sql = $this->connect()->prepare("UPDATE usuarios SET 
+							clave = :clave
+						WHERE cedula = :cedula");
+			$sql->execute(['clave' => $usuarios->getClave(), 'cedula' => $usuarios->getCedula()]);
+		}
 
     }

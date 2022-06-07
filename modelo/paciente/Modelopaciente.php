@@ -103,6 +103,7 @@
             }
             
         }
+        
 
         public function actualizaPaciente(ObjetoPaciente $e){
 			$id = $e->getId();

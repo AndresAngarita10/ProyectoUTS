@@ -51,7 +51,7 @@
                     $tabla = $ModDatosRemision->getRemisionFase1();
                     //$remision = $ModRemision->getRemisionFase1RR();
                     //echo date('d-m-Y');
-                    $cita = $ModCitas->getCitasXFechaSinTomar(date('2022-05-31'), $_POST['ccMed']);
+                    $cita = $ModCitas->getCitasXFechaSinTomar(date('2022-06-15'), $_POST['ccMed']);
                     $pacientes = $ModPaciente->getPacientes(); 
                     //echo("remision".$remision[2]->getTelefono());
                    

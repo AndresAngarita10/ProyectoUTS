@@ -41,7 +41,7 @@
     $valorControl=0;     
     if (isset($_POST['control'])) {
         $valorControl = $_POST['control'];
-        echo ($valorControl);
+        //echo ($valorControl);
         //$nombre = $_POST['nombre'];
     }
     ?>
