@@ -117,7 +117,7 @@
       <a class="btn btn-outline-info " style="margin-top: -290px; max-width: 147px;" type="submit" href="../formulariosSolicitud/MostrarPaciente.php"> Pacientes </a> 
       
         </div>
-        <a class="btn btn-outline-warning rounded-4" style="margin-top: -100px; max-width: 147px;" type="submit" href="../../controlador/acompañante/AcompañanteControl.php">Salir </a>
+        <a class="btn btn-outline-warning rounded-4" style="margin-top: -250px; max-width: 147px;" type="submit" href="../../controlador/acompañante/AcompañanteControl.php">Salir </a>
     </div>
   </div>
   <div class="col-md-7 center col-sm-2  text-white p-5" style="background-color:#C4F4F8;">
