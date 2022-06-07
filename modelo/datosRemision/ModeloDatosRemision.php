@@ -13,8 +13,8 @@
                     $contador = 0;
                     $resultado = $this->connect()->prepare("SELECT * FROM datosremision  WHERE numeroHistoria = :numeroHistoria  ");
                     $resultado->execute(['numeroHistoria' => $numeroHistoria]);
-                        $remitir = new ObjetoDatosAdministrativos();
                         while($registro = $resultado->fetch(PDO::FETCH_ASSOC)){
+                            $remitir = new ObjetoDatosAdministrativos();
 
                             $remitir->setId($registro["id"]);
                             $remitir->setTipoSolicitud($registro["tipoSolicitud"]);
@@ -33,9 +33,9 @@
                             $remitir->setfinalizado($registro["finalizado"]);
                             $matriz[$contador] = $remitir;
                             $contador++;
+                            return $matriz;
                         }
-                        
-                        return $matriz;
+                        return null;
                     
                 }
 

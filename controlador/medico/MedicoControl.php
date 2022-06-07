@@ -409,7 +409,7 @@
                     </head>
                     <body onLoad='javascript:enviarForm();'>
                         <form name='form' action='../../vista/index/IndexMedico.php' method='post'>
-                                <input type='text' hidden name='retorno' value='<?php echo($retorno);?>'/>
+                                <input type='text' hidden name='error' value='<?php echo($retorno);?>'/>
                                 <input type='text' hidden name='ccMed' value='<?php echo($ccMed);?>'/>
                         </form>
                     </body>
@@ -445,7 +445,7 @@
                     </head>
                     <body onLoad='javascript:enviarForm();'>
                         <form name='form' action='../../vista/index/IndexMedico.php' method='post'>
-                                <input type='text' hidden name='retorno' value='<?php echo($retorno);?>'/>
+                                <input type='text' hidden name='aceptada' value='<?php echo($retorno);?>'/>
                                 <input type='text' hidden name='ccMed' value='<?php echo($ccMed); //?Medico= echo($ccMed); ?>'/>
                         </form>
                     </body>
@@ -482,8 +482,8 @@
                 </head>
                 <body onLoad='javascript:enviarForm();'>
                     <form name='form' action='../../vista/index/IndexMedico.php' method='post'>
-                            <input type='text' hidden name='control' value='<?php echo($retorno);?>'/>
-                            <input type='text' hidden name='ccMed' value='<?php echo($ccMed); //?Medico= echo($ccMed); ?>'/>
+                            <input type='text' hidden name='aceptada' value='<?php echo($retorno);?>'/>
+                            <input type='text' hidden name='ccMed' value='<?php echo($ccMed);  ?>'/>
                     </form>
                 </body>
 
@@ -543,6 +543,39 @@
             </body>
 
         <?php
+    }else if($modo == "NoAsistio"){
+        $ccMed = $_POST['ccMed'];
+        $numeroDocumento = $_POST['numeroDocumento'];
+        $idCita = $_POST['idCita'];
+
+        $ModCitas = new ModeloCitas();
+        $citas = new ObjetoCitas();
+        $citas->setNoAsistio(1);
+        $citas->setTomoMedico(1);
+        $citas->setCedulaMedicoFinal($ccMed);
+        $citas->setId($idCita);
+        $ModCitas->NoAsistioCitaXMedicoFinal($citas);
+        $retorno = "Accion no asistio paciente aceptada"
+        ?> 
+
+            <title>Procesando...</title>
+            <script type='text/javascript'>
+                function enviarForm(){
+                    document.form.submit();
+                }
+            </script>
+            </head>
+            <body onLoad='javascript:enviarForm();'>
+                <form name='form' action='../../vista/index/indexMedicoFinal.php' method='post'>
+
+                    <input type='text' hidden name='control' value='2'/>
+                    <input type='text' hidden name='ccMed' value='<?php echo($ccMed); //?Medico= echo($ccMed); ?>'/>
+                            <input type='text' hidden name='aceptada' value='<?php echo($retorno);?>'/>
+                </form>
+            </body>
+
+        <?php
+
     }else if($modo == "GuardarHistoriaFase5"){
         
 
@@ -643,6 +676,7 @@
         $ObjetoRegistroSolicitud->setUsuarioTerminooSolicitud(htmlentities(addslashes("none")));
 
         $ModResgistroSolicitud->insertar($ObjetoRegistroSolicitud);
+        $retorno = "Finalizada con exito!";
         ?> 
 
                 <title>Procesando...</title>
@@ -654,7 +688,7 @@
                 </head>
                 <body onLoad='javascript:enviarForm();'>
                     <form name='form' action='../../vista/index/indexMedicoFinal.php' method='post'>
-                            <input type='text' hidden name='control' value='<?php echo($retorno);?>'/>
+                            <input type='text' hidden name='aceptada' value='<?php echo($retorno);?>'/>
                             <input type='text' hidden name='ccMed' value='<?php echo($ccMed); //?Medico= echo($ccMed); ?>'/>
                     </form>
                 </body>

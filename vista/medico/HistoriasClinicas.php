@@ -40,6 +40,13 @@
                                         <button class="btn btn-info btn-success my-2 my-sm-0 rounded-5" type="submit"
                                         name="boton" id="boton" value="busCedulaDescHistoria">Buscar</button>
                                 </form>
+                                <form name='formSolicitudesTerminadas' action='../index/indexMedicoFinal.php' method='post'>
+                                        <input type='text' hidden name='ccMed' id="ccMed" value='<?php echo($_POST['ccMed']);?>'/>
+
+                                        <button class="btn btn-outline-danger  my-2 my-sm-0" style="margin-top: 10px;" type="submit"
+                                    name="boton" id="boton" value="#">Salir</button>
+                                        
+                                </form>
                 </div>
             
             <?php

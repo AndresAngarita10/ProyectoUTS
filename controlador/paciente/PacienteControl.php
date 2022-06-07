@@ -232,16 +232,34 @@
             header("Location: ../../vista/formulariosSolicitud/NuevoPaciente.php");
             }else {
             $validarHisFase1 = $ModHistoria->validarHistoriaxPaciente($_POST["identificacion"]);
-            $validarHisFase2 = $ModHistoria->validarAntecedentes($_POST["identificacion"]);
-            $validarHisFase3 = $ModHistoria->validarEnfermedades($_POST["identificacion"]);
-            $validarHisFase4 = $ModHistoria->validarExamenFisico($_POST["identificacion"]);
             
             if($validarHisFase1!=null){
+                $validarHisFase2 = $ModHistoria->validarAntecedentes($validarHisFase1->getnumeroHistoria());
+                $validarHisFase3 = $ModHistoria->validarEnfermedades($validarHisFase1->getnumeroHistoria());
+                $validarHisFase4 = $ModHistoria->validarExamenFisico($validarHisFase1->getnumeroHistoria());
                 if($validarHisFase2!=null){
                     if($validarHisFase3!=null){
                         if($validarHisFase4!=null){
                             
-                            header("Location: ../../vista/formulariosSolicitud/MostrarEror.php");
+                            ?> 
+    
+                                <title>Procesando...</title>
+                                <script type='text/javascript'>
+                                    function enviarForm(){
+                                        document.form.submit();
+                                    }
+                                </script>
+                                </head>
+                                <body onLoad='javascript:enviarForm();'>
+                                    <form name='form' action='../../vista/index/IndexMedico.php' method='post'>
+                                            <input type='text' hidden name='cc' value='<?php //echo($ccAdmin); //?Medico= echo($ccMed); ?>'/>
+                                            <input type='text' hidden name='error' value='<?php echo("Ya Existe una historia clinica completa del paciente"); ?>'/>
+                    
+                                    </form>
+                                </body>
+                               
+                                <?php
+                                echo $validarHisFase1->getnumeroHistoria();
 
                         }else{
                                     ?> 

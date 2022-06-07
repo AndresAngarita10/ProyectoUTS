@@ -593,11 +593,11 @@
         
 
 
-        public function validarAntecedentes($cedula){
+        public function validarAntecedentes($numeroHistoria){
             $matriz = array(); 
             $contador = 0;
-            $resultado = $this->connect()->prepare("SELECT * FROM antecedentespersonales  WHERE identificacionPaciente like '%'+:cedula+'%'  ");
-            $resultado->execute(['cedula' => $cedula]);
+            $resultado = $this->connect()->prepare("SELECT * FROM antecedentespersonales  WHERE numeroHistoria like '%'+:numeroHistoria+'%'  ");
+            $resultado->execute(['numeroHistoria' => $numeroHistoria]);
             if($resultado!=null){
                 while($registro = $resultado->fetch(PDO::FETCH_ASSOC)){
                     $antecedentes = new ObjetoAntecedentesPersonales();
@@ -607,9 +607,10 @@
                     $antecedentes->setidentificacionPaciente($registro["identificacionPaciente"]);
                     $antecedentes->setfrechaAgregado($registro["fechaAgregado"]);
                     $antecedentes->setfechaUltMod($registro["fechaUltMod"]);
+                    return $antecedentes;
                 }
                 
-                return $antecedentes;
+                return null;
             }else {
                 return null;
                 
@@ -618,11 +619,11 @@
 
 
 
-        public function validarEnfermedades($cedula){
+        public function validarEnfermedades($numeroHistoria){
             $matriz = array(); 
             $contador = 0;
-            $resultado = $this->connect()->prepare("SELECT * FROM enfermedades  WHERE identificacionPaciente like '%'+:cedula+'%'  ");
-            $resultado->execute(['cedula' => $cedula]);
+            $resultado = $this->connect()->prepare("SELECT * FROM enfermedades  WHERE numeroHistoria like '%'+:numeroHistoria+'%'  ");
+            $resultado->execute(['numeroHistoria' => $numeroHistoria]);
             if($resultado!=null){
                 while($registro = $resultado->fetch(PDO::FETCH_ASSOC)){
                     $enfermedades = new ObjetoEnfermedades();
@@ -632,9 +633,10 @@
                     $enfermedades->setidentificacionPaciente($registro["identificacionPaciente"]);
                     $enfermedades->setfrechaAgregado($registro["fechaAgregado"]);
                     $enfermedades->setfechaUltMod($registro["fechaUltMod"]);
+                    return $enfermedades;
                 }
                 
-                return $enfermedades;
+                return null;
             }else {
                 return null;
                 
@@ -642,11 +644,11 @@
         }
 
 
-        public function validarExamenFisico($cedula){
+        public function validarExamenFisico($numeroHistoria){
             $matriz = array(); 
             $contador = 0;
-            $resultado = $this->connect()->prepare("SELECT * FROM examenfisico  WHERE identificacionPaciente like '%'+:cedula+'%'  ");
-            $resultado->execute(['cedula' => $cedula]);
+            $resultado = $this->connect()->prepare("SELECT * FROM examenfisico  WHERE numeroHistoria like '%'+:numeroHistoria+'%'  ");
+            $resultado->execute(['numeroHistoria' => $numeroHistoria]);
             if($resultado!=null){
                 while($registro = $resultado->fetch(PDO::FETCH_ASSOC)){
                     $examenFisico = new ObjetoExamenFisico();
@@ -656,9 +658,10 @@
                     $examenFisico->setidentificacionPaciente($registro["identificacionPaciente"]);
                     $examenFisico->setfrechaAgregado($registro["fechaAgregado"]);
                     $examenFisico->setfechaUltMod($registro["fechaUltMod"]);
+                    return $examenFisico;
                 }
                 
-                return $examenFisico;
+                return null;
             }else {
                 return null;
                 

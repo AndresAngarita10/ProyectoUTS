@@ -66,6 +66,17 @@
                     <br />
                     <button class="btn btn-info  my-2 my-sm-0" style="margin-top: 100px;" type="submit"
                     name="boton" id="boton" value="guardarP">Asignar</button>
+                    <?php 
+                    if (isset($_POST['error'])) {
+                    ?>
+                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; margin-left: auto; margin-right: auto;" role="alert">
+                         <?php echo($_POST['error']); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php
+
+                }
+                ?>
             </form>
                 <br />
 
